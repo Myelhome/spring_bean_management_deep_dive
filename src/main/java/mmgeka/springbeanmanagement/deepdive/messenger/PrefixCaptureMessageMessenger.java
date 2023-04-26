@@ -1,9 +1,12 @@
 package mmgeka.springbeanmanagement.deepdive.messenger;
 
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import mmgeka.springbeanmanagement.deepdive.annotation.Profiling;
 import mmgeka.springbeanmanagement.deepdive.annotation.RandomStringUUID;
 
 @Slf4j
+@Profiling
 public class PrefixCaptureMessageMessenger implements Messenger {
 
     private String message;
@@ -13,6 +16,15 @@ public class PrefixCaptureMessageMessenger implements Messenger {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public PrefixCaptureMessageMessenger() {
+        log.info("constructor init, prefix {}", prefix);
+    }
+
+    @PostConstruct
+    public void init(){
+        log.info("post constructor init, prefix {}", prefix);
     }
 
     @Override

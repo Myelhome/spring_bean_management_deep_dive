@@ -1,6 +1,7 @@
 package mmgeka.springbeanmanagement.deepdive.config;
 
 import mmgeka.springbeanmanagement.deepdive.messenger.PrefixCaptureMessageMessenger;
+import mmgeka.springbeanmanagement.deepdive.postprocessor.ProfilingProxyAnnotationBeanPostProcessor;
 import mmgeka.springbeanmanagement.deepdive.postprocessor.RandomStringUUIDAnnotationBeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,14 +10,19 @@ import org.springframework.context.annotation.Configuration;
 public class MessengerConfig {
 
     @Bean
-    public RandomStringUUIDAnnotationBeanPostProcessor randomStringUUIDAnnotationBeanPostProcessor(){
+    public RandomStringUUIDAnnotationBeanPostProcessor randomStringUUIDAnnotationBeanPostProcessor() {
         return new RandomStringUUIDAnnotationBeanPostProcessor();
     }
 
     @Bean
-    public PrefixCaptureMessageMessenger prefixCaptureMessageMessenger(){
+    public ProfilingProxyAnnotationBeanPostProcessor profilingProxyAnnotationBeanPostProcessor() throws Exception {
+        return new ProfilingProxyAnnotationBeanPostProcessor();
+    }
+
+    @Bean
+    public PrefixCaptureMessageMessenger prefixCaptureMessageMessenger() {
         var messenger = new PrefixCaptureMessageMessenger();
-        messenger.setMessage("locked message");
+        messenger.setMessage("hard-coded message");
         return messenger;
     }
 }
