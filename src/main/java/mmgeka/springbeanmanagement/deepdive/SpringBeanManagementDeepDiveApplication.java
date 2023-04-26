@@ -1,4 +1,4 @@
-package com.example.spring_bean_management_deep_dive;
+package mmgeka.springbeanmanagement.deepdive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
