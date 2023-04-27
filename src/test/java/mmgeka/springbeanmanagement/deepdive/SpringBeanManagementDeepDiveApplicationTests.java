@@ -1,5 +1,6 @@
 package mmgeka.springbeanmanagement.deepdive;
 
+import mmgeka.springbeanmanagement.deepdive.applicationcontext.PropertyFileApplicationContext;
 import mmgeka.springbeanmanagement.deepdive.messenger.interfaces.Messenger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ class SpringBeanManagementDeepDiveApplicationTests {
 	@Test
 	void contextLoads() throws InterruptedException {
 		while (true) {
-			context.getBean(Messenger.class).sendMessage("i'm ignored");
+			context.getBean("prefixCaptureMessengerTestAdapter", Messenger.class).sendMessage("i'm ignored");
+			context.getBean("testMessenger", Messenger.class).sendMessage("i'm ignored(test)");
 			Thread.sleep(10_000);
 		}
 	}
