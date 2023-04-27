@@ -1,13 +1,10 @@
 package mmgeka.springbeanmanagement.deepdive;
 
-import mmgeka.springbeanmanagement.deepdive.config.MessengerConfig;
-import mmgeka.springbeanmanagement.deepdive.messenger.Messenger;
-import mmgeka.springbeanmanagement.deepdive.postprocessor.ProfilingProxyAnnotationBeanPostProcessor;
+import mmgeka.springbeanmanagement.deepdive.messenger.interfaces.Messenger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootTest
 class SpringBeanManagementDeepDiveApplicationTests {

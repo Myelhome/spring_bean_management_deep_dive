@@ -1,4 +1,4 @@
-package mmgeka.springbeanmanagement.deepdive.messenger;
+package mmgeka.springbeanmanagement.deepdive.messenger.interfaces;
 
 import mmgeka.springbeanmanagement.deepdive.annotation.PostProxy;
 

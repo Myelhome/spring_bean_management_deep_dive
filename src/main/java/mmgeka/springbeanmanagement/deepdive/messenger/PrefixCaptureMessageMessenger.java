@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import mmgeka.springbeanmanagement.deepdive.annotation.PostProxy;
 import mmgeka.springbeanmanagement.deepdive.annotation.ProfilingOverride;
 import mmgeka.springbeanmanagement.deepdive.annotation.RandomStringUUID;
+import mmgeka.springbeanmanagement.deepdive.messenger.interfaces.HardCodedMessenger;
+import mmgeka.springbeanmanagement.deepdive.messenger.interfaces.Messenger;
 
 @Slf4j
 @ProfilingOverride
