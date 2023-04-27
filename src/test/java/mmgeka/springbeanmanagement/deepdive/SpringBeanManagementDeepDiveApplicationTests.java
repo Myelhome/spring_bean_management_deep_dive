@@ -22,4 +22,10 @@ class SpringBeanManagementDeepDiveApplicationTests {
 		}
 	}
 
+	@Test
+	void loadPropertiesContext(){
+		ApplicationContext context = new PropertyFileApplicationContext("context.properties");
+		context.getBean(Messenger.class).sendMessage("context");
+	}
+
 }
