@@ -1,5 +1,6 @@
 package mmgeka.springbeanmanagement.deepdive.config;
 
+import mmgeka.springbeanmanagement.deepdive.contextlistener.PostProxyInvokerContextListener;
 import mmgeka.springbeanmanagement.deepdive.messenger.PrefixCaptureMessageMessenger;
 import mmgeka.springbeanmanagement.deepdive.postprocessor.ProfilingProxyAnnotationBeanPostProcessor;
 import mmgeka.springbeanmanagement.deepdive.postprocessor.RandomStringUUIDAnnotationBeanPostProcessor;
@@ -8,6 +9,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MessengerConfig {
+
+    @Bean
+    public PostProxyInvokerContextListener postProxyInvokerContextListener() {
+        return new PostProxyInvokerContextListener();
+    }
 
     @Bean
     public RandomStringUUIDAnnotationBeanPostProcessor randomStringUUIDAnnotationBeanPostProcessor() {

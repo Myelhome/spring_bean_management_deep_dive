@@ -1,7 +1,7 @@
 package mmgeka.springbeanmanagement.deepdive.postprocessor;
 
 import lombok.extern.slf4j.Slf4j;
-import mmgeka.springbeanmanagement.deepdive.annotation.Profiling;
+import mmgeka.springbeanmanagement.deepdive.annotation.ProfilingOverride;
 import mmgeka.springbeanmanagement.deepdive.config.ProfilingConfig;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ProfilingProxyAnnotationBeanPostProcessor implements BeanPostProces
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if (bean.getClass().isAnnotationPresent(Profiling.class)) map.put(beanName, bean.getClass());
+        if (bean.getClass().isAnnotationPresent(ProfilingOverride.class)) map.put(beanName, bean.getClass());
 
         return bean;
     }

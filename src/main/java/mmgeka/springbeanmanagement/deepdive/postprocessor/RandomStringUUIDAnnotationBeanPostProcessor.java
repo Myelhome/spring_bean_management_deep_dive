@@ -14,7 +14,7 @@ public class RandomStringUUIDAnnotationBeanPostProcessor implements BeanPostProc
             var annotation = field.getAnnotation(RandomStringUUID.class);
             if (annotation != null) {
                 var top = annotation.top();
-                var randomUUID = UUID.randomUUID().toString().substring(0, Math.min(32, top));
+                var randomUUID = UUID.randomUUID().toString().substring(0, Math.min(36, top));
                 field.setAccessible(true);
                 ReflectionUtils.setField(field, bean, randomUUID);
             }

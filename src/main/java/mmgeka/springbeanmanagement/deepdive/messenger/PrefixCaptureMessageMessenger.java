@@ -2,12 +2,13 @@ package mmgeka.springbeanmanagement.deepdive.messenger;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import mmgeka.springbeanmanagement.deepdive.annotation.Profiling;
+import mmgeka.springbeanmanagement.deepdive.annotation.PostProxy;
+import mmgeka.springbeanmanagement.deepdive.annotation.ProfilingOverride;
 import mmgeka.springbeanmanagement.deepdive.annotation.RandomStringUUID;
 
 @Slf4j
-@Profiling
-public class PrefixCaptureMessageMessenger implements Messenger {
+@ProfilingOverride
+public class PrefixCaptureMessageMessenger implements Messenger, HardCodedMessenger {
 
     private String message;
 
@@ -23,12 +24,23 @@ public class PrefixCaptureMessageMessenger implements Messenger {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         log.info("post constructor init, prefix {}", prefix);
     }
 
     @Override
     public void sendMessage(String capturedMessage) {
         log.info("message \"{}\" captured, instead hard-coded message sent \"{}:{}\"", capturedMessage, prefix, message);
+    }
+
+    @Override
+    public void sendHardCodedMessage() {
+        log.info("hard-coded message sent \"{}:{}\"", prefix, message);
+    }
+
+    @Override
+    @PostProxy
+    public void onCreateSend() {
+        log.info("messenger with message \"{}:{}\" is ready to use", prefix, message);
     }
 }
