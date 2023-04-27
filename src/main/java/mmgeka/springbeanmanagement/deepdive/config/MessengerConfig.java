@@ -1,6 +1,7 @@
 package mmgeka.springbeanmanagement.deepdive.config;
 
 import mmgeka.springbeanmanagement.deepdive.contextlistener.PostProxyInvokerContextListener;
+import mmgeka.springbeanmanagement.deepdive.factorypostprocessor.CustomScopeRegistryBeanFactoryPostProcessor;
 import mmgeka.springbeanmanagement.deepdive.factorypostprocessor.DeprecatedReplacementHandlerBeanFactoryPostProcessor;
 import mmgeka.springbeanmanagement.deepdive.messenger.PrefixCaptureMessenger;
 import mmgeka.springbeanmanagement.deepdive.messenger.SuffixCaptureMessenger;
@@ -39,6 +40,11 @@ public class MessengerConfig {
     }
 
     @Bean
+    public CustomScopeRegistryBeanFactoryPostProcessor customScopeRegistryBeanFactoryPostProcessor(){
+        return new CustomScopeRegistryBeanFactoryPostProcessor();
+    }
+
+    @Bean
     public PrefixCaptureMessenger prefixCaptureMessenger() {
         var messenger = new PrefixCaptureMessenger();
         messenger.setMessage("hard-coded message");
@@ -58,7 +64,9 @@ public class MessengerConfig {
     }
 
     @Bean
-    @Scope(value = "prototype")
+    @Scope(value = "e2prototype"
+//            , proxyMode = ScopedProxyMode.TARGET_CLASS
+    )
     public Suffix suffix() {
         return new Suffix(UUID.randomUUID().toString().substring(0, 8));
     }
