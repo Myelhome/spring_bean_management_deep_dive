@@ -8,5 +8,5 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 @Configuration
 public class ProfilingConfig {
-    private boolean enabled = true;
+    private boolean enabled;
 }

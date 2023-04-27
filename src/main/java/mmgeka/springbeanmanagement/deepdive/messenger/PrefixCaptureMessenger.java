@@ -12,14 +12,14 @@ import mmgeka.springbeanmanagement.deepdive.messenger.interfaces.Messenger;
 @Slf4j
 @Setter
 @ProfilingOverride
-public class PrefixCaptureMessageMessenger implements Messenger, HardCodedMessenger {
+public class PrefixCaptureMessenger implements Messenger, HardCodedMessenger {
 
     private String message;
 
     @RandomStringUUID(top = 8)
     private String prefix;
 
-    public PrefixCaptureMessageMessenger() {
+    public PrefixCaptureMessenger() {
         log.info("constructor init, prefix {}", prefix);
     }
 

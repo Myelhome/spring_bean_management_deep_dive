@@ -10,7 +10,7 @@ public class PrefixCaptureMessengerTestAdapter extends TestMessenger {
     private Messenger delegate;
 
     @Autowired
-    public void setDelegate(@Qualifier("prefixCaptureMessageMessenger") Messenger delegate) {
+    public void setDelegate(@Qualifier("prefixCaptureMessenger") Messenger delegate) {
         this.delegate = delegate;
     }
 

@@ -15,11 +15,16 @@ class SpringBeanManagementDeepDiveApplicationTests {
 
 	@Test
 	void contextLoads() throws InterruptedException {
-		while (true) {
-			context.getBean("prefixCaptureMessengerTestAdapter", Messenger.class).sendMessage("i'm ignored");
+		for (int i = 0; i < 3; i++) {
+			context.getBean("prefixCaptureMessenger", Messenger.class).sendMessage("i'm ignored");
 			context.getBean("testMessenger", Messenger.class).sendMessage("i'm ignored(test)");
 			Thread.sleep(10_000);
 		}
+	}
+
+	@Test
+	void suffixCaptureMessenger(){
+        for (int i = 0; i < 5; i++) context.getBean("suffixCaptureMessenger", Messenger.class).sendMessage("i'm ignored but new");
 	}
 
 	@Test
